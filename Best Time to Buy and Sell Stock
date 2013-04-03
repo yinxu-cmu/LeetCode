@@ -1,0 +1,19 @@
+public class Solution {
+    public int maxProfit(int[] prices) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+      if (prices.length == 0)
+			return 0;
+		
+		int profit = Integer.MIN_VALUE;		// not INT.MIN
+		int buy = Integer.MAX_VALUE;
+		for (int i = 0; i < prices.length; i++) {
+			if (buy > prices[i])
+				buy = prices[i];
+			if (profit < prices[i] - buy)
+				profit = prices[i] - buy;
+		}
+		return profit;
+        
+    }
+}
