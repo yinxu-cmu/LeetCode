@@ -1,0 +1,39 @@
+public class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if (s.length() == 0)
+            return 0;
+        
+        int answer = Integer.MIN_VALUE;
+        String substring = null;
+        
+        /* check all possible substring to see if it contains repeating chars */
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i + 1; j < s.length() + 1; j++){
+                
+                /* note: substring - i: inclusice, j: exclusive */
+          	substring = s.substring(i, j);
+                
+                /* the length is not j - i + 1 */
+        		if (!ifContainRepeatingChar(substring) && answer < (j - i))
+        			answer = j - i;
+        	}
+        		
+        }
+        return answer;
+    }
+    
+    public boolean ifContainRepeatingChar(String s) {
+        /* no need to check the last character */
+        for (int i = 0; i < s.length() - 1; i++) {
+            
+            /* from the second character to check */
+    		for (int j = i + 1; j < s.length(); j++) {
+    			if (s.charAt(i) == s.charAt(j))
+    				return true;
+    		}
+    	}
+    	return false;
+    }
+}
