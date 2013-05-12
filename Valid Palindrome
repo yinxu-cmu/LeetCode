@@ -1,0 +1,21 @@
+public static boolean isPalindrome(String s) {
+	s = s.toLowerCase();
+	int head = 0;
+	int tail = s.length() - 1;
+	while (head <= tail) {
+		if(!(Character.isLetter(s.charAt(head))
+				|| Character.isDigit(s.charAt(head)))) {
+			head++;
+			continue;
+		}
+		if(!(Character.isLetter(s.charAt(tail))
+				|| Character.isDigit(s.charAt(tail)))) {
+			tail--;
+			continue;
+		}
+		if(s.charAt(head++) != s.charAt(tail--))
+			return false;
+		
+	}
+	return true;
+}
