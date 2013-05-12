@@ -1,0 +1,29 @@
+public class Solution {
+    public String getPermutation(int n, int k) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        ArrayList<Integer> set = new ArrayList<Integer> ();
+        int total = 1;
+
+        for (int i = 1; i <= n; i++) {
+            set.add(i);
+            total *= i;
+        }
+        
+        String ret = "";
+        int nextIndex = k - 1;
+        int currentIndex;
+        int digit = n;
+        
+        while (digit > 0) {
+            total = total / digit;
+            currentIndex = nextIndex / total;
+            nextIndex = nextIndex % total;
+            digit--;
+            ret += "" + set.get(currentIndex);
+            set.remove(currentIndex);
+        }
+        
+        return ret;
+    }
+}
