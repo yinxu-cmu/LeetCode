@@ -1,0 +1,11 @@
+  public static HashSet<Integer> find (int[] numbers) {
+		HashSet<Integer> uniqueElements = new HashSet<Integer>();
+		HashSet<Integer> dupElements = new HashSet<Integer>();
+		for (int i = 0; i < numbers.length; i++) {
+			if (uniqueElements.contains(numbers[i]))
+				dupElements.add(numbers[i]);
+			else
+				uniqueElements.add(numbers[i]);
+		}
+		return dupElements;
+	}
