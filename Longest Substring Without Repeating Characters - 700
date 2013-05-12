@@ -1,15 +1,16 @@
 public class Solution {
     public int lengthOfLongestSubstring(String s) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+
         if (s.length() <= 1)
-      	return s.length();
+      		return s.length();
     	
     	int maxLength = 1;
     	boolean[] occur = new boolean[256];
     	
     	for (int i = 0; i < s.length() - 1; i++) {
     		occur[s.charAt(i)] = true;
+
+			/* test all substring starting from index i */
     		for (int j = i + 1; j < s.length(); j++) {
     			if (occur[s.charAt(j)] == false) {
     				if (maxLength < (j - i + 1))
