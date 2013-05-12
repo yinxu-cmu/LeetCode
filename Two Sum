@@ -1,0 +1,13 @@
+public static int[] twoSum(int[] numbers, int target) {
+	int[] ret = new int[2];
+	HashMap<Integer, Integer> hashmap = new HashMap<Integer, Integer>();
+	for (int i  = 0; i < numbers.length; i++) {
+		if (hashmap.containsKey(numbers[i])) {
+			ret[0] = hashmap.get(numbers[i]) + 1;
+			ret[1] = i + 1;
+			break;
+		}
+		hashmap.put(target - numbers[i], i);
+	}
+	return ret;
+}
