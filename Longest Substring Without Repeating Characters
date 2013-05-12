@@ -1,7 +1,6 @@
 public class Solution {
     public int lengthOfLongestSubstring(String s) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+
         if (s.length() == 0)
             return 0;
         
