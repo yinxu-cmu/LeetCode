@@ -1,0 +1,35 @@
+public static ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
+    // Start typing your Java solution below
+    // DO NOT write main() function
+    
+	/* 
+	 * java.util.Queue is an interface so you cannot instantiate it directly. 
+	 * You can instantiate a concrete subclass, such as LinkedList:
+	 */
+	Queue<TreeNode> q = new LinkedList<TreeNode>();
+	ArrayList<ArrayList<Integer>> ret = new ArrayList<ArrayList<Integer>>();
+	if (root == null)
+		return ret;
+	
+	q.add(root);
+	q.add(null);
+	ArrayList<Integer> oneLevel = new ArrayList<Integer>();
+
+	while(!q.isEmpty()) {
+		TreeNode head = q.poll();
+		if (head != null) {
+			oneLevel.add(head.val);
+			if (head.left != null)
+				q.add(head.left);
+			if (head.right != null)
+				q.add(head.right);
+		}
+		else {
+			ret.add(oneLevel);
+			oneLevel = new ArrayList<Integer>();
+			if (q.size() > 0)
+				q.add(null);
+		}
+	}
+	
+    return ret;
