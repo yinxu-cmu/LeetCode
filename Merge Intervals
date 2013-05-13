@@ -1,0 +1,32 @@
+public static ArrayList<Interval> merge(ArrayList<Interval> intervals) {
+    // Start typing your Java solution below
+    // DO NOT write main() function
+  
+    Collections.sort(intervals, 
+			new Comparator<Interval>() {
+		public int compare(Interval a, Interval b) {
+			return a.start > b.start ? 1 : (a.start == b.start ? 0 : -1);
+		}
+	});
+    
+    /* after sorting */
+    System.out.println(intervals);
+    
+    ArrayList<Interval> ret = new ArrayList<Interval>();
+    
+    /* iterate over the arraylist */
+    for (int i = 0; i < intervals.size(); i++) {
+    	Interval tmp = new Interval(intervals.get(i).start, 
+    			intervals.get(i).end);
+    	
+    	/* merge the intervals by updating the end number */
+    	while (i < intervals.size() - 1 && 
+    			tmp.end >= intervals.get(i + 1).start) {
+            tmp.end = Math.max(tmp.end, intervals.get(i + 1).end);
+    		i++; 
+    	}
+    	ret.add(tmp);
+    	
+    }
+    return ret;   
+}	
