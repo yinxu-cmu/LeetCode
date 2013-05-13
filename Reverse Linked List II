@@ -1,0 +1,32 @@
+public class Solution {
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if (m == n)
+            return head;
+            
+        ListNode root = new ListNode(0);
+        root.next = head;
+        ListNode headp = root;
+        ListNode headn = head;
+        int i = 1;
+        while (i < m) {
+            headp = headp.next;
+            headn = headn.next;
+            i++;
+        }
+        
+        ListNode runner1 = headn;
+        ListNode runner2 = headn.next;
+        ListNode tmp;
+        while (i++ < n ) {
+            tmp = runner2;
+            runner2 = runner2.next;
+            tmp.next = runner1;
+            runner1 = tmp;
+        }
+        headn.next = runner2;
+        headp.next = runner1;
+        return root.next;
+    }
+}
