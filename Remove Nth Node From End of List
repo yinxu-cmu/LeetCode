@@ -1,0 +1,17 @@
+public ListNode removeNthFromEnd(ListNode head, int n) {
+    // Start typing your Java solution below
+    // DO NOT write main() function
+    ListNode root = new ListNode(0);
+    root.next = head;
+    ListNode runner1 = root;
+    ListNode runner2 = head;
+    int i = 1;
+    while (i++ < n)
+        runner2 = runner2.next;
+    while (runner2.next != null) {
+        runner1 = runner1.next;
+        runner2 = runner2.next;
+    }
+    runner1.next = runner1.next.next;
+    return root.next;
+}
