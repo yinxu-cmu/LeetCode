@@ -13,6 +13,5 @@ public class Solution {
 				profit = prices[i] - buy;
 		}
 		return profit;
-        
 	}
 }
