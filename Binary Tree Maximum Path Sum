@@ -1,0 +1,18 @@
+public int maxPathSum(TreeNode root) {
+    /* simulate JAVA style pass by reference */
+  int[] max = {Integer.MIN_VALUE};
+	helper(root, max);
+	return max[0];
+}
+
+/* return the max value of either left branch or right branch
+ * and update max[0] */
+public int helper(TreeNode root, int[] max) {
+	if (root == null)
+		return 0;
+	int leftMax = Math.max(0, helper(root.left, max));
+	int rightMax = Math.max(0, helper(root.right, max));
+	max[0] = Math.max(max[0], root.val + leftMax + rightMax);
+	return Math.max(root.val + leftMax, root.val + rightMax);
+	
+}
