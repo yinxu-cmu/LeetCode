@@ -1,0 +1,23 @@
+public static ArrayList<Integer> inorderTraversal(TreeNode root) {
+    // Start typing your Java solution below
+    // DO NOT write main() function
+    ArrayList<Integer> ret = new ArrayList<Integer>();
+    Stack<TreeNode> s = new Stack<TreeNode>();
+    TreeNode current = root;
+    if (root == null)
+        return ret;
+    else {
+        while (s.size() > 0 || current != null) {
+            if (current != null) {
+                s.push(current);
+                current = current.left;
+            }
+            else {
+                current = s.pop();
+                ret.add(current.val);
+                current = current.right;
+            }
+        }
+    }
+    return ret;
+}
