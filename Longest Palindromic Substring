@@ -1,0 +1,28 @@
+public static String longestPalindrome(String s) {
+    String answer = null;
+    int maxLength = 0;
+    
+    /* remember to update the maxLength */
+    for (int i = 0; i < s.length() - 1; i++) {
+      
+    	/* two kinds of palindrome, the length could be odd or even number */
+    	if (maxLength < getPalindromeFromCenter(s, i, i).length()) {
+    		answer = getPalindromeFromCenter(s, i, i);
+    		maxLength = getPalindromeFromCenter(s, i, i).length();
+    	}
+    	if (maxLength < getPalindromeFromCenter(s, i, i + 1).length()) {
+    		answer = getPalindromeFromCenter(s, i, i + 1); 
+    		maxLength = getPalindromeFromCenter(s, i, i + 1).length();
+    	}
+    }
+    return answer;
+}
+
+public static String getPalindromeFromCenter(String str, int center1, int center2) {
+	
+	/* must check center1, center2 first */
+	for (int length = str.length() ; center1 > -1 && center2 < length
+			&& str.charAt(center1) == str.charAt(center2); center1--, center2++) {
+	}
+	return str.substring(center1 + 1, center2);
+}
