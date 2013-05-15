@@ -1,0 +1,19 @@
+public static int reverse(int x) {
+    String s = "" + Math.abs(x);
+    int sign = x / Math.abs(x);
+    char[] c = s.toCharArray();
+    int head = 0;
+    int tail = s.length() - 1;
+    char tmp;
+    
+    /* s.charAt(index) = tmp is NO GOOD */
+    while(head <= tail) {
+        tmp = c[head];
+    	c[head] = c[tail];
+    	c[tail] = tmp;
+    	head++;
+    	tail--;
+    }
+    int ret = sign * Integer.parseInt(new String(c));
+    return ret;
+}
